@@ -122,6 +122,10 @@ extension PaginatedTableView {
     // All loading logic goes here i.e. showing/hiding of loaders and pagination
     private func load(refresh: Bool = false) {
         
+        if !enablePullToRefresh {
+            return
+        }
+        
         // reset page number if refresh
         if refresh {
             currentPage = firstPage
