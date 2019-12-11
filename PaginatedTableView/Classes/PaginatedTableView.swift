@@ -51,6 +51,9 @@ public class PaginatedTableView: UITableView {
     public var heightForHeaderInSection: CGFloat = 0
     public var titleForHeaderInSection = ""
     
+    // Own settings
+    public var enablePrefetch = false
+    
     public var enablePullToRefresh = false {
         willSet {
             if newValue == enablePullToRefresh { return }
@@ -256,8 +259,12 @@ extension PaginatedTableView: UITableViewDataSource, UITableViewDelegate {
 //
 extension PaginatedTableView: UITableViewDataSourcePrefetching {
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        if indexPaths.contains(where: { $0.section == sections - 1 }) {
-            load()
+        if !self.enablePrefetch {
+            return
+        } else {
+            if indexPaths.contains(where: { $0.section == sections - 1 }) {
+                load()
+            }
         }
     }
 }
