@@ -59,6 +59,7 @@ public class PaginatedTableView: UITableView {
             if newValue == enablePullToRefresh { return }
             if newValue {
                 self.addSubview(refreshControltableView)
+                self.sendSubviewToBack(refreshControltableView)
             } else {
                 refreshControltableView.removeFromSuperview()
             }
