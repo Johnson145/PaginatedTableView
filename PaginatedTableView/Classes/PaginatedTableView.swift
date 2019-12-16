@@ -73,7 +73,7 @@ public class PaginatedTableView: UITableView {
     // refresh control
     lazy var refreshControltableView: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+//        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(self.handleRefreshtableView(_:)), for: UIControl.Event.valueChanged)
         return refreshControl
     }()
