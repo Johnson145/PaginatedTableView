@@ -50,6 +50,12 @@ public class PaginatedTableView: UITableView {
     public var loadMoreViewHeight: CGFloat = 100
     public var heightForHeaderInSection: CGFloat = 0
     public var titleForHeaderInSection = ""
+    /// An optional load more cell backgroundColor
+    /// default is .white
+    public var loadMoreCellBackgroundColor: UIColor = .white
+    /// An optional load more cell acitivity indicator style
+    /// default is .gray
+    public var activityIndicatorStyle: UIActivityIndicatorView.Style = .gray
     
     // Own settings
     public var enablePrefetch = false
@@ -190,6 +196,11 @@ extension PaginatedTableView: UITableViewDataSource, UITableViewDelegate {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? LoadMoreCell else {
                 fatalError("The dequeued cell is not an instance of LoadMoreCell.")
             }
+            
+            cell.backgroundColor = loadMoreCellBackgroundColor
+            cell.activityIndicator.style = activityIndicatorStyle
+            cell.activityIndicator.backgroundColor = loadMoreCellBackgroundColor
+            
             cell.activityIndicator.hidesWhenStopped = true
             if self.isLoading {
                 cell.activityIndicator.startAnimating()
