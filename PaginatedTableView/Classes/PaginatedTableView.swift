@@ -262,7 +262,7 @@ extension PaginatedTableView: UITableViewDataSource, UITableViewDelegate {
             }
             return 0.0
         }
-        return paginatedDelegate?.tableView(tableView, heightForRowAt: indexPath) ?? 0
+        return paginatedDelegate?.tableView(tableView, heightForRowAt: indexPath) ?? UITableView.automaticDimension
     }
 }
 
